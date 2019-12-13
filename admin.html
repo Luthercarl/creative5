@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+ 
+  <title>Store Managment</title>
+</head>
+
+<body>
+<div id='admin'>
+  	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <a class="navbar-brand" href="#">Sorcerous Store</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+		<ul class="navbar-nav">
+		  <li class="nav-item">
+			<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="shopping-cart.html">Shopping Cart [{{cart.length}}]</a>
+			
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="admin.html">Admin Page</a>
+			
+		  </li>
+	
+		</ul>
+	  </div>
+	</nav>
+
+
+    <div class="heading">
+      <h1>Store Managment Interface</h1>
+      <h2>Add an Product</h2>
+    </div>
+    <div class="add">
+      <div class="form">
+        <input v-model="title" placeholder="Title">
+        <input v-model="price" placeholder="Price">		
+		<input v-model="description" placeholder="Description">
+        <p></p>
+        <input type="file" name="photo" @change="fileChanged">
+        <button @click="upload">Upload</button>
+      </div>
+      <div class="upload" v-if="addItem">
+        <h2>{{addItem.title}}</h2>
+		<h2>{{addItem.price}}</h2>
+        <img :src="addItem.path" />
+		<h3>{{addItem.description}}<h3>
+      </div>
+    </div>
+	<div class="heading">
+		<div class="circle">2</div>
+		<h2>Edit/Delete an Product</h2>
+    </div>
+    <div class="edit">
+      <div class="form">
+        <input v-model="findTitle" placeholder="Search">
+        <div class="suggestions" v-if="suggestions.length > 0">
+          <div class="suggestion" v-for="s in suggestions" @click="selectItem(s)">{{s.title}}
+          </div>
+        </div>
+      </div>
+      <div class="upload" v-if="findItem">
+        <input v-model="findItem.title">
+        <input v-model="findItem.description">		
+        <p></p>
+        <img :src="findItem.path" />
+      </div>
+      <div class="actions" v-if="findItem">
+        <button @click="deleteItem(findItem)">Delete</button>
+		<button @click="editItem(findItem)">Edit</button>
+      </div>
+    </div>
+	
+</div>
+  <div class="footer">
+	<a href="https://github.com/BYUCS260/lab-5-mongodb-Luthercarl">GitHub</a>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+  <script src="admin.js"></script>
+  
+</body>
+
+</html>

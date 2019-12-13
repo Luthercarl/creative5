@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+ 
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <title>Shopping Cart</title>
+</head>
+
+<body>
+
+  <div id="app" class="content">
+   	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <a class="navbar-brand" href="#">Sorcerous Store</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+		<ul class="navbar-nav">
+		  <li class="nav-item">
+			<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="shopping-cart.html">Shopping Cart [{{cart.length}}]</a>
+			
+		  </li>
+		    <li class="nav-item">
+			<a class="nav-link" href="admin.html">Admin Page</a>
+			
+		  </li>
+	
+		</ul>
+	  </div>
+	</nav>
+	  <div class="cartdiv">
+      
+      <div class="cartimage" v-for="cartitems in cart">
+        <h2>{{cartitems.title}}</h2>
+        <img :src="cartitems.path" />
+		<h3>{{cartitems.description}}</h3>
+		<button class="buttonColor"  v-on:click="deleteCartItem(cartitems)">
+			<small class="text-muted">Delete</small>
+		</button>
+      </div>
+	  </div>
+  </div>
+  <div class="footer">
+    <a href="admin.html">Admin</a>
+	<a href="https://github.com/BYUCS260/lab-5-mongodb-Luthercarl">GitHub</a>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
